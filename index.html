@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suhit Das Mahapatra — Actuarial & Financial Modelling Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy-900: #f5f0e8;
+  --navy-800: #efe8dc;
+  --navy-700: #e8dcc8;
+  --navy-600: #d4c4a8;
+  --navy-500: #c0ac8e;
+  --gold: #8b6914;
+  --gold-light: #a67c1a;
+  --gold-dim: rgba(139,105,20,0.1);
+  --cream: #faf8f4;
+  --cream-dim: #e8dcc8;
+  --text-light: #2c1810;
+  --text-muted: #6b5444;
+  --white: #1a0f08;
+  --card-bg: #ffffff;
+  --card-border: rgba(139,105,20,0.15);
+  --section-alt: #efe8dc;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+  --max-w: 1140px;
+  --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  font-family: var(--font-body);
+  background: var(--navy-900);
+  color: var(--text-light);
+  line-height: 1.7;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+::selection { background: var(--gold); color: #fff; }
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(245,240,232,0.92);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--card-border);
+  transition: var(--transition);
+}
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 68px;
+}
+.nav-brand {
+  font-family: var(--font-display); font-size: 1.15rem; font-weight: 600;
+  color: var(--gold); text-decoration: none; letter-spacing: 0.02em;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--text-muted); text-decoration: none; font-size: 0.85rem;
+  font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+  transition: color var(--transition); position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0;
+  height: 2px; background: var(--gold); transition: width var(--transition);
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+.nav-toggle { display: none; background: none; border: none; color: var(--gold); font-size: 1.5rem; cursor: pointer; }
+.hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  background: var(--navy-900);
+}
+.hero-content {
+  max-width: var(--max-w); padding: 2rem; text-align: center;
+  position: relative; z-index: 1;
+  animation: heroFadeIn 1s ease-out;
+}
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-tag {
+  display: inline-block; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+  border: 1px solid var(--gold); padding: 6px 20px; border-radius: 2px;
+  margin-bottom: 2rem;
+}
+.hero h1 {
+  font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700; color: var(--text-light); line-height: 1.15; margin-bottom: 1.2rem;
+}
+.hero h1 span { color: var(--gold); }
+.hero-sub {
+  font-size: 1.15rem; color: var(--text-muted); max-width: 620px;
+  margin: 0 auto 2.5rem; line-height: 1.8; font-weight: 300;
+}
+.badge {
+  font-size: 0.8rem; font-weight: 500; color: var(--text-light);
+  background: var(--navy-700); border: 1px solid var(--card-border);
+  padding: 8px 18px; border-radius: 3px; letter-spacing: 0.03em;
+}
+.section { padding: 6rem 2rem; position: relative; }
+.section-alt { background: var(--section-alt); }
+.section-inner { max-width: var(--max-w); margin: 0 auto; }
+.section-label {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem;
+}
+.section-title {
+  font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 700; color: var(--white); margin-bottom: 1rem; line-height: 1.2;
+}
+.section-desc {
+  font-size: 1.05rem; color: var(--text-muted); max-width: 600px;
+  margin-bottom: 3rem; line-height: 1.8; font-weight: 300;
+}
+.divider {
+  width: 50px; height: 3px; background: var(--gold); margin-bottom: 2rem; border-radius: 2px;
+}
+.skills-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+.skill-card {
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: 6px; padding: 2rem 1.8rem;
+  box-shadow: 0 2px 12px rgba(44,24,16,0.06);
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+.skill-card:hover { box-shadow: 0 6px 20px rgba(44,24,16,0.1); }
+.skill-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+.skill-icon {
+  width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;
+  background: var(--gold-dim); border-radius: 8px; margin-bottom: 1.2rem;
+  font-size: 1.2rem; color: var(--gold);
+}
+.skill-card h3 {
+  font-family: var(--font-display); font-size: 1.15rem; color: var(--white);
+  margin-bottom: 0.5rem; font-weight: 600;
+}
+.skill-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+.skill-tag {
+  font-family: var(--font-mono); font-size: 0.7rem; padding: 3px 10px;
+  background: rgba(139,105,20,0.08); color: #6b4f10;
+  border-radius: 3px; border: 1px solid rgba(139,105,20,0.18);
+}
+.model-entry { margin-bottom: 4rem; }
+.model-entry:last-child { margin-bottom: 0; }
+.model-header {
+  display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 1.5rem;
+  cursor: pointer;
+}
+.model-num {
+  font-family: var(--font-display); font-size: 2.4rem; font-weight: 700;
+  color: var(--gold); line-height: 1; min-width: 50px;
+}
+.model-meta h3 {
+  font-family: var(--font-display); font-size: 1.35rem; color: var(--white);
+  font-weight: 600; margin-bottom: 0.3rem;
+}
+.model-meta .model-exam {
+  font-size: 0.8rem; color: var(--gold); font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem;
+}
+.model-meta p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
+.flowchart-container {
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: 8px; padding: 2rem; margin-bottom: 1.5rem; overflow-x: auto;
+}
+.flowchart-title {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem;
+}
+.flowchart {
+  display: flex; align-items: center; gap: 0; justify-content: flex-start;
+  flex-wrap: nowrap; min-width: max-content; padding: 0.5rem 0;
+}
+.fc-node {
+  display: flex; flex-direction: column; align-items: center;
+  min-width: 110px; flex-shrink: 0;
+}
+.fc-box {
+  padding: 10px 16px; border-radius: 5px; font-size: 0.78rem; font-weight: 600;
+  text-align: center; white-space: nowrap; letter-spacing: 0.02em;
+  border: 1.5px solid; line-height: 1.3;
+}
+.fc-box.input { background: rgba(139,105,20,0.1); border-color: var(--gold); color: #6b4f10; }
+.fc-box.process { background: rgba(50,100,160,0.08); border-color: #3d7ab5; color: #2a5a8a; }
+.fc-box.check { background: rgba(60,140,80,0.08); border-color: #3d8a4f; color: #2a6b3a; }
+.fc-box.output { background: rgba(180,90,40,0.08); border-color: #b45a28; color: #8a4420; }
+.fc-box.sim { background: rgba(120,70,170,0.08); border-color: #7a4aaa; color: #5c3888; }
+.fc-sub { font-size: 0.62rem; color: var(--text-muted); margin-top: 4px; font-weight: 400; }
+.fc-arrow {
+  color: var(--text-muted); font-size: 1.1rem; margin: 0 6px; flex-shrink: 0;
+  display: flex; align-items: center;
+}
+.steps-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.step-card {
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: 6px; padding: 1.4rem 1.5rem; position: relative;
+  border-left: 3px solid var(--gold); transition: border-color var(--transition);
+}
+.step-card:hover { border-color: var(--gold-light); }
+.step-num {
+  font-family: var(--font-mono); font-size: 0.65rem; font-weight: 500;
+  color: var(--gold); letter-spacing: 0.1em; margin-bottom: 0.4rem;
+}
+.step-card h4 {
+  font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.4rem;
+}
+.step-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+.step-fn {
+  font-family: var(--font-mono); font-size: 0.72rem; color: #6b4f10;
+  background: rgba(139,105,20,0.08); padding: 2px 8px; border-radius: 3px;
+  display: inline-block; margin-top: 0.5rem;
+}
+.toggle-detail {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.82rem; color: var(--gold); cursor: pointer;
+  background: none; border: 1px solid var(--card-border); padding: 8px 18px;
+  border-radius: 4px; font-weight: 500; margin-top: 1rem;
+  transition: all var(--transition); font-family: var(--font-body);
+}
+.toggle-detail:hover { background: var(--gold-dim); border-color: var(--gold); }
+.model-detail { display: none; margin-top: 1.5rem; }
+.model-detail.open { display: block; animation: slideDown 0.35s ease-out; }
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.tech-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+.tech-badge {
+  font-family: var(--font-mono); font-size: 0.68rem; padding: 4px 10px;
+  background: rgba(139,105,20,0.08); color: #6b4f10;
+  border-radius: 3px; border: 1px solid rgba(139,105,20,0.2);
+}
+.project-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 1.5rem;
+}
+.project-card {
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: 8px; padding: 2rem; position: relative; overflow: hidden;
+  box-shadow: 0 2px 12px rgba(44,24,16,0.06);
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+.project-card:hover { box-shadow: 0 6px 20px rgba(44,24,16,0.1); }
+.project-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+.project-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+}
+.project-type {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem;
+}
+.project-card h3 {
+  font-family: var(--font-display); font-size: 1.2rem; color: var(--white);
+  margin-bottom: 0.6rem; font-weight: 600;
+}
+.project-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
+.project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1.2rem; }
+.project-stack span {
+  font-family: var(--font-mono); font-size: 0.68rem; padding: 3px 10px;
+  background: rgba(139,105,20,0.08); color: #6b4f10;
+  border-radius: 3px; border: 1px solid rgba(139,105,20,0.18);
+}
+.cv-image-container {
+  max-width: 700px; margin: 0 auto; text-align: center;
+}
+.cv-image-container img {
+  width: 100%; border-radius: 8px;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 8px 30px rgba(44,24,16,0.12);
+}
+.contact-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem; max-width: 700px;
+}
+.contact-item {
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: 6px; padding: 1.5rem; text-align: center;
+  transition: border-color var(--transition);
+}
+.contact-item:hover { border-color: var(--gold); }
+.contact-item a {
+  color: var(--gold); text-decoration: none; font-weight: 500;
+  font-size: 0.95rem; transition: color var(--transition);
+}
+.contact-item a:hover { color: var(--gold-light); }
+.contact-label {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem;
+}
+footer {
+  text-align: center; padding: 3rem 2rem;
+  border-top: 1px solid var(--card-border);
+  font-size: 0.82rem; color: var(--text-muted);
+}
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex; flex-direction: column; position: absolute;
+    top: 68px; left: 0; right: 0; background: rgba(245,240,232,0.98);
+    padding: 1.5rem 2rem; gap: 1.2rem; border-bottom: 1px solid var(--card-border);
+  }
+  .nav-toggle { display: block; }
+  .hero h1 { font-size: 2rem; }
+  .section { padding: 4rem 1.2rem; }
+  .model-header { flex-direction: column; gap: 0.5rem; }
+  .flowchart-container { padding: 1.2rem; }
+  .steps-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand" style="font-size:1.45rem;">Suhit Das Mahapatra</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#models">Models</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <span class="hero-tag">My Modelling Portfolio</span>
+    <p class="hero-sub">
+      Actuarial science student with deep expertise in Excel-based financial modelling,
+      Python automation, and AI-driven analytics — building transparent, auditable models
+      for real-world decision making.
+    </p>
+  </div>
+</section>
+<section class="section" id="about">
+  <div class="section-inner reveal">
+    <span class="section-label">01 / About Me</span>
+    <div class="divider"></div>
+    <h2 class="section-title">About Me</h2>
+    <p class="section-desc">
+      I'm an actuarial science student with a genuine interest in how models are built — not just what they output.
+      Over the past few years I've sat actuarial exams with iFoA, building each exam model
+      from scratch with a focus on structure, transparency, and reproducibility.
+    </p>
+    <p class="section-desc" style="margin-top:-1rem;">
+      Alongside the exam work, I've been exploring Python for automation and data analysis — writing tools that cut
+      down manual effort and make results easier to communicate. I enjoy the overlap between traditional actuarial
+      practice and the practical side of data engineering.
+    </p>
+  </div>
+</section>
+<section class="section section-alt" id="skills">
+  <div class="section-inner">
+    <span class="section-label reveal">02 / Technical Skills</span>
+    <div class="divider reveal"></div>
+    <h2 class="section-title reveal">Core competencies</h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-icon">&#128202;</div>
+        <h3>Excel Financial Modelling</h3>
+        <p>Parameter-driven workbooks, cashflow projections, NPV/IRR analysis, scenario modelling, and regression-based forecasting.</p>
+        <div class="skill-tags">
+          <span class="skill-tag">SUMPRODUCT</span>
+          <span class="skill-tag">INDEX/MATCH</span>
+          <span class="skill-tag">Named Ranges</span>
+          <span class="skill-tag">Data Validation</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">&#128013;</div>
+        <h3>Python &amp; Automation</h3>
+        <p>Building scripts and pipelines for data processing, analytics automation, and AI-powered tools using modern Python libraries.</p>
+        <div class="skill-tags">
+          <span class="skill-tag">pandas</span>
+          <span class="skill-tag">scikit-learn</span>
+          <span class="skill-tag">Make.com</span>
+          <span class="skill-tag">Telegram API</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">&#128269;</div>
+        <h3>Data Integrity &amp; Audit</h3>
+        <p>Systematic data validation frameworks with automated checks, colour-coded audit layers, and full documentation trails.</p>
+        <div class="skill-tags">
+          <span class="skill-tag">COUNT/COUNTA</span>
+          <span class="skill-tag">COUNTIF</span>
+          <span class="skill-tag">MIN/MAX Flags</span>
+          <span class="skill-tag">Chi-squared</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">&#128200;</div>
+        <h3>Scenario &amp; Sensitivity Analysis</h3>
+        <p>All models support base/adverse/alternative scenarios from a single parameter switch — no formula duplication required.</p>
+        <div class="skill-tags">
+          <span class="skill-tag">IF-Switch Pattern</span>
+          <span class="skill-tag">Scenario Flags</span>
+          <span class="skill-tag">Monte Carlo</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">&#127922;</div>
+        <h3>Stochastic Modelling</h3>
+        <p>Monte Carlo simulation using RAND()-seeded log-normal distributions with rigorous random number validation.</p>
+        <div class="skill-tags">
+          <span class="skill-tag">RAND()</span>
+          <span class="skill-tag">EXP()</span>
+          <span class="skill-tag">Log-Normal</span>
+          <span class="skill-tag">Chi-squared Test</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">&#127959;</div>
+        <h3>Model Architecture</h3>
+        <p>Consistent layered sheet architecture: Parameters &rarr; Raw Data &rarr; Data Checks &rarr; Calculations &rarr; Outputs &rarr; Charts.</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Single Source of Truth</span>
+          <span class="skill-tag">Layered Sheets</span>
+          <span class="skill-tag">Audit Trail</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="models">
+  <div class="section-inner">
+    <span class="section-label reveal">03 / Actuarial Models</span>
+    <div class="divider reveal"></div>
+    <h2 class="section-title reveal">Six models. One philosophy.</h2>
+    <p class="section-desc reveal">
+      Every model is anchored by a single Parameters sheet — the sole input control panel.
+      Changing one cell propagates through all scenarios, projections, and outputs.
+    </p>
+    <!-- M1 -->
+    <div class="model-entry reveal">
+      <div class="model-header" onclick="toggleModel('m1')">
+        <div class="model-num">01</div>
+        <div class="model-meta">
+          <div class="model-exam">IFoA &middot; April 2025</div>
+          <h3>EV Programme Cashflow Model</h3>
+          <p>Models a 20-year government electric vehicle subsidy programme — projecting station build costs, admin, advertising, and subsidy against foregone petrol tax revenue.</p>
+          <div class="tech-badges">
+            <span class="tech-badge">SUMIF</span>
+            <span class="tech-badge">SUMPRODUCT</span>
+            <span class="tech-badge">ROUND</span>
+            <span class="tech-badge">NPV</span>
+            <span class="tech-badge">Discount Factors</span>
+          </div>
+        </div>
+      </div>
+      <button class="toggle-detail" onclick="toggleModel('m1')"><span id="m1-icon">&#9656;</span> View workflow</button>
+      <div class="model-detail" id="m1">
+        <div class="flowchart-container">
+          <div class="flowchart-title">Data Flow Architecture</div>
+          <div class="flowchart">
+            <div class="fc-node"><div class="fc-box input">Parameters</div><div class="fc-sub">Rates &amp; assumptions</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box process">Raw Data</div><div class="fc-sub">20yr monthly sales</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box check">Data Checks</div><div class="fc-sub">Ok / Error flags</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box process">Yearly Car Sales</div><div class="fc-sub">SUMIF aggregation</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box process">Total Cars</div><div class="fc-sub">Cohort depletion</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box output">Expected Cashflows</div><div class="fc-sub">NPV via SUMPRODUCT</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box output">Comparisons</div><div class="fc-sub">Final verdict</div></div>
+          </div>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card"><div class="step-num">STEP 01</div><h4>Centralise Assumptions</h4><p>All rates (discount rate at 7%, inflation, subsidy per EV at &pound;3,000, station capacity) are stored in a single Parameters sheet.</p></div>
+          <div class="step-card"><div class="step-num">STEP 02</div><h4>Aggregate Monthly &rarr; Yearly</h4><p>The 'Yearly Car Sales' sheet uses SUMIF to collapse 240 monthly data points into 20 annual figures, applying an escalating EV replacement rate.</p><span class="step-fn">SUMIF(year_col, year, sales_col)</span></div>
+          <div class="step-card"><div class="step-num">STEP 03</div><h4>Cohort-Style Stock Model</h4><p>Annual stock of petrol and EV cars is derived through a depletion model — each year's cohort is tracked and retired over time.</p></div>
+          <div class="step-card"><div class="step-num">STEP 04</div><h4>Inflation-Adjusted Projections</h4><p>Station build costs, admin, and advertising are projected using compound inflation, all pulling rates from Parameters.</p><span class="step-fn">cost &times; (1 + inflation)^t</span></div>
+          <div class="step-card"><div class="step-num">STEP 05</div><h4>NPV Calculation</h4><p>A precomputed discount factor column is multiplied against cashflows using SUMPRODUCT for a clean, auditable NPV at 7%.</p><span class="step-fn">SUMPRODUCT(cashflows, disc_factors)</span></div>
+          <div class="step-card"><div class="step-num">STEP 06</div><h4>Scenario Comparison</h4><p>The 'Comparisons' sheet consolidates NPV of EV costs vs. lost petrol tax vs. the government budget — all via direct cell references.</p></div>
+        </div>
+      </div>
+    </div>
+    <!-- M2 -->
+    <div class="model-entry reveal">
+      <div class="model-header" onclick="toggleModel('m2')">
+        <div class="model-num">02</div>
+        <div class="model-meta">
+          <div class="model-exam">IFoA Mock &middot; April 2025</div>
+          <h3>Extended EV Programme Model</h3>
+          <p>The most architecturally sophisticated model — introduces data correction layers, a five-colour audit system, and fully self-documenting named ranges throughout.</p>
+          <div class="tech-badges">
+            <span class="tech-badge">Named Ranges</span>
+            <span class="tech-badge">Data Correction</span>
+            <span class="tech-badge">5-Colour Audit</span>
+            <span class="tech-badge">NPV</span>
+          </div>
+        </div>
+      </div>
+      <button class="toggle-detail" onclick="toggleModel('m2')"><span id="m2-icon">&#9656;</span> View workflow</button>
+      <div class="model-detail" id="m2">
+        <div class="flowchart-container">
+          <div class="flowchart-title">Data Flow Architecture</div>
+          <div class="flowchart">
+            <div class="fc-node"><div class="fc-box input">Parameters</div><div class="fc-sub">Named ranges</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box process">Raw Data (old)</div><div class="fc-sub">Original data preserved</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box check">Data Correction</div><div class="fc-sub">Anomaly fixes</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box check">Data Checks</div><div class="fc-sub">5-colour legend</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box process">Cashflow Engine</div><div class="fc-sub">Self-documenting</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box output">Results Summary</div><div class="fc-sub">Budget vs NPV</div></div>
+          </div>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card"><div class="step-num">STEP 01</div><h4>Define Named Ranges</h4><p>Every key parameter gets a named range — station_build_cost, admin_cost, expense_inflation, VAL_DATE — making all formulas fully readable.</p><span class="step-fn">station_build_cost, energy_supply_per_station_pa</span></div>
+          <div class="step-card"><div class="step-num">STEP 02</div><h4>Preserve &amp; Correct Data</h4><p>The raw data is preserved in 'Raw_data_old'. A dedicated 'Data_correction' sheet fixes anomalies while documenting every change.</p></div>
+          <div class="step-card"><div class="step-num">STEP 03</div><h4>Five-Colour Audit Layer</h4><p>Green = inputs, Blue = checks, Yellow = corrected data &amp; results, Red = errors, Orange = danger/formula-change cells. At-a-glance auditability.</p></div>
+          <div class="step-card"><div class="step-num">STEP 04</div><h4>Self-Documenting Formulas</h4><p>Cashflow formulas read as plain English — e.g., =F10 &times; station_build_cost &times; (1 + station_build_inflation)^t — no cell-reference tracing needed.</p></div>
+          <div class="step-card"><div class="step-num">STEP 05</div><h4>Dual Scenario Output</h4><p>The Results Summary pulls live NPV figures from both scenario sheets, comparing each against the stated government budget in a single panel.</p></div>
+        </div>
+      </div>
+    </div>
+    <!-- M3 -->
+    <div class="model-entry reveal">
+      <div class="model-header" onclick="toggleModel('m3')">
+        <div class="model-num">03</div>
+        <div class="model-meta">
+          <div class="model-exam">IFoA &middot; September 2022</div>
+          <h3>Pension Annuity Amendment Model</h3>
+          <p>Models the impact of a pension amendment on ~100 annuitants — applying conditional uplifts and re-escalation based on eligibility criteria.</p>
+          <div class="tech-badges">
+            <span class="tech-badge">Row-by-Row Projection</span>
+            <span class="tech-badge">Conditional Logic</span>
+            <span class="tech-badge">Discount Factors</span>
+            <span class="tech-badge">Charts</span>
+          </div>
+        </div>
+      </div>
+      <button class="toggle-detail" onclick="toggleModel('m3')"><span id="m3-icon">&#9656;</span> View workflow</button>
+      <div class="model-detail" id="m3">
+        <div class="flowchart-container">
+          <div class="flowchart-title">Data Flow Architecture</div>
+          <div class="flowchart">
+            <div class="fc-node"><div class="fc-box input">Parameters</div><div class="fc-sub">Rates &amp; amendment date</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box process">Raw Data</div><div class="fc-sub">~100 annuitants</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box check">Data Checks</div><div class="fc-sub">Record validation</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box process">Annuity Projection</div><div class="fc-sub">Row-by-row calc</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box output">Charts</div><div class="fc-sub">Payment distribution</div></div>
+          </div>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card"><div class="step-num">STEP 01</div><h4>Load Annuitant Data</h4><p>~100 records with identity numbers, dates of birth, retirement dates, current pension amounts, and escalation rates.</p></div>
+          <div class="step-card"><div class="step-num">STEP 02</div><h4>Validate Records</h4><p>COUNT/COUNTA checks confirm expected record count. MIN/MAX and COUNTIF catch nulls, negatives, and impossible date ranges.</p></div>
+          <div class="step-card"><div class="step-num">STEP 03</div><h4>Apply Amendment Logic</h4><p>Eligible annuitants (pensions within the affected range) receive a 10% uplift and are re-escalated at the revised rate from the amendment date.</p></div>
+          <div class="step-card"><div class="step-num">STEP 04</div><h4>Discount &amp; Visualise</h4><p>Projected payments are discounted using the rate from Parameters. A Charts sheet visualises the distribution of payments across the full dataset.</p></div>
+        </div>
+      </div>
+    </div>
+    <!-- M4 -->
+    <div class="model-entry reveal">
+      <div class="model-header" onclick="toggleModel('m4')">
+        <div class="model-num">04</div>
+        <div class="model-meta">
+          <div class="model-exam">IFoA &middot; April 2024</div>
+          <h3>Manufacturing Plant Cashflow with Regression</h3>
+          <p>The most technically diverse model — combines linear regression for demand forecasting with IF-switch driven plant comparisons and adverse economic scenarios.</p>
+          <div class="tech-badges">
+            <span class="tech-badge">Linear Regression</span>
+            <span class="tech-badge">IF-Switch Pattern</span>
+            <span class="tech-badge">ANOVA</span>
+            <span class="tech-badge">Base/Adverse Scenarios</span>
+          </div>
+        </div>
+      </div>
+      <button class="toggle-detail" onclick="toggleModel('m4')"><span id="m4-icon">&#9656;</span> View workflow</button>
+      <div class="model-detail" id="m4">
+        <div class="flowchart-container">
+          <div class="flowchart-title">Data Flow Architecture</div>
+          <div class="flowchart">
+            <div class="fc-node"><div class="fc-box input">Parameters</div><div class="fc-sub">Plant A &amp; B side by side</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box process">Raw Data</div><div class="fc-sub">60 months history</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box check">Data Checks</div><div class="fc-sub">Validation flags</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box sim">Regression</div><div class="fc-sub">Intercept, slope, R&sup2;</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box process">Cashflow (IF-switch)</div><div class="fc-sub">Plant A / Plant B</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box output">Comparison</div><div class="fc-sub">Base vs adverse</div></div>
+          </div>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card"><div class="step-num">STEP 01</div><h4>Regression Analysis</h4><p>A linear regression of market demand on interbank interest rate is fitted over 60 months. Intercept, slope, R&sup2;, and ANOVA are stored as named values.</p></div>
+          <div class="step-card"><div class="step-num">STEP 02</div><h4>IF-Switch Architecture</h4><p>Cell A6 holds the plant identity. Every parameter lookup uses IF($A$6="Plant A", ..., ...) — one formula set serves both plants.</p><span class="step-fn">IF($A$6="Plant A", Parameters!$B$8, Parameters!$C$8)</span></div>
+          <div class="step-card"><div class="step-num">STEP 03</div><h4>Demand Forecasting</h4><p>Annual demand is forecast using the regression coefficients, with the interest rate as the independent variable — no manual overrides.</p></div>
+          <div class="step-card"><div class="step-num">STEP 04</div><h4>Adverse Scenario</h4><p>A demand reduction and lower salary inflation are specified in Parameters alongside base assumptions — toggling between them for side-by-side comparison.</p></div>
+        </div>
+      </div>
+    </div>
+    <!-- M5 -->
+    <div class="model-entry reveal">
+      <div class="model-header" onclick="toggleModel('m5')">
+        <div class="model-num">05</div>
+        <div class="model-meta">
+          <div class="model-exam">IFoA &middot; April 2025</div>
+          <h3>Cinema Profitability Model</h3>
+          <p>Demonstrates INDEX/MATCH as a lookup engine — deriving utilisation rates by film category and duration, driving three structurally identical scenario sheets.</p>
+          <div class="tech-badges">
+            <span class="tech-badge">INDEX/MATCH</span>
+            <span class="tech-badge">COUNTIF</span>
+            <span class="tech-badge">SUMIF</span>
+            <span class="tech-badge">Three Scenarios</span>
+          </div>
+        </div>
+      </div>
+      <button class="toggle-detail" onclick="toggleModel('m5')"><span id="m5-icon">&#9656;</span> View workflow</button>
+      <div class="model-detail" id="m5">
+        <div class="flowchart-container">
+          <div class="flowchart-title">Data Flow Architecture</div>
+          <div class="flowchart">
+            <div class="fc-node"><div class="fc-box input">Parameters</div><div class="fc-sub">Prices &amp; staff costs</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box process">Raw Data</div><div class="fc-sub">Film schedules</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box check">Data Checks</div><div class="fc-sub">Utilisation table</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box process">Calc: Original</div><div class="fc-sub">INDEX/MATCH lookup</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box process">Calc: Annual Pass</div><div class="fc-sub">Same structure</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box process">Calc: Additional</div><div class="fc-sub">Same structure</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box output">Charts</div><div class="fc-sub">Revenue by category</div></div>
+          </div>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card"><div class="step-num">STEP 01</div><h4>Build Utilisation Table</h4><p>A lookup table is indexed by showing duration (1, 2, 3+ months) and film category (Epic, Major, Regular). This drives all revenue calculations.</p></div>
+          <div class="step-card"><div class="step-num">STEP 02</div><h4>Determine Showing Duration</h4><p>COUNTIF counts how many months each film has been on each screen — automatically classifying into the correct duration bracket.</p><span class="step-fn">COUNTIF(range, film_id)</span></div>
+          <div class="step-card"><div class="step-num">STEP 03</div><h4>INDEX/MATCH Lookup</h4><p>The correct utilisation rate is retrieved from the table using INDEX/MATCH — entirely data-driven, with zero manual entry.</p><span class="step-fn">INDEX(table, MATCH(duration), MATCH(category))</span></div>
+          <div class="step-card"><div class="step-num">STEP 04</div><h4>Three Identical Scenario Sheets</h4><p>Original, Annual Pass, and Additional scenarios share the same formula structure — only the parameter flags differ.</p></div>
+        </div>
+      </div>
+    </div>
+    <!-- M6 -->
+    <div class="model-entry reveal">
+      <div class="model-header" onclick="toggleModel('m6')">
+        <div class="model-num">06</div>
+        <div class="model-meta">
+          <div class="model-exam">IAI &middot; May 2024</div>
+          <h3>Cricket Tournament Monte Carlo Simulation</h3>
+          <p>The most unique model — uses Monte Carlo simulation with log-normal distributions to model player performance across 110 players, validated by Chi-squared testing.</p>
+          <div class="tech-badges">
+            <span class="tech-badge">Monte Carlo</span>
+            <span class="tech-badge">RAND()</span>
+            <span class="tech-badge">EXP()</span>
+            <span class="tech-badge">Chi-squared</span>
+            <span class="tech-badge">SUMIF</span>
+            <span class="tech-badge">Audit Trail</span>
+          </div>
+        </div>
+      </div>
+      <button class="toggle-detail" onclick="toggleModel('m6')"><span id="m6-icon">&#9656;</span> View workflow</button>
+      <div class="model-detail" id="m6">
+        <div class="flowchart-container">
+          <div class="flowchart-title">Data Flow Architecture</div>
+          <div class="flowchart">
+            <div class="fc-node"><div class="fc-box input">Parameters</div><div class="fc-sub">Points &amp; auction rules</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box sim">Random Numbers</div><div class="fc-sub">110&times;75 RAND() matrix</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box check">RN Checks</div><div class="fc-sub">Mean, Var, &chi;&sup2; test</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box process">Runs / Wickets / Catches</div><div class="fc-sub">EXP() &rarr; ROUND()</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box process">Averages</div><div class="fc-sub">Named range pricing</div></div>
+            <div class="fc-arrow">&rarr;</div>
+            <div class="fc-node"><div class="fc-box output">Tournament Results</div><div class="fc-sub">SUMIF league table</div></div>
+          </div>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card"><div class="step-num">STEP 01</div><h4>Generate Random Matrix</h4><p>A 110&times;75 matrix of RAND() values — one row per player, columns for each simulated match and performance metric.</p></div>
+          <div class="step-card"><div class="step-num">STEP 02</div><h4>Validate Randomness</h4><p>Descriptive statistics (mean &asymp; 0.5, variance &asymp; 1/12) plus a Chi-squared test with Ok/Error flags ensure simulation input quality before any results are accepted.</p></div>
+          <div class="step-card"><div class="step-num">STEP 03</div><h4>Log-Normal Performance</h4><p>RAND() values are passed through EXP() to create log-normal distributions of runs, wickets, and catches, then ROUND()ed to integers.</p><span class="step-fn">ROUND(EXP(RAND() &times; &sigma; + &mu;))</span></div>
+          <div class="step-card"><div class="step-num">STEP 04</div><h4>Auction Pricing</h4><p>Named ranges (Points_Table, Price_Per_Point, Price_Rounding) make the auction pricing formulas transparent and fully self-documenting.</p></div>
+          <div class="step-card"><div class="step-num">STEP 05</div><h4>League Table Aggregation</h4><p>SUMIF aggregates projected runs, wickets, and catches by team across all simulation runs, producing the final tournament standings.</p><span class="step-fn">SUMIF(team_col, team_name, runs_col)</span></div>
+          <div class="step-card"><div class="step-num">STEP 06</div><h4>Full Audit Trail</h4><p>A dedicated Audit Trail sheet documents purpose, data sources, methodology, and limitations — providing complete traceability of every modelling decision.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section section-alt" id="projects">
+  <div class="section-inner">
+    <span class="section-label reveal">04 / Other Projects</span>
+    <div class="divider reveal"></div>
+    <h2 class="section-title reveal">Beyond the spreadsheet</h2>
+    <p class="section-desc reveal">Technical projects that extend actuarial thinking into Python automation, AI, and analytics.</p>
+    <div class="project-grid">
+      <div class="project-card reveal">
+        <div class="project-type">AI &middot; Automation</div>
+        <h3>Actuarial Edge — AI Study Assistant</h3>
+        <p>An AI-powered study assistant for actuarial exam preparation, integrated with Telegram via Make.com. Delivers on-demand practice questions, concept explanations, and study tracking.</p>
+        <div class="project-stack"><span>AI/LLM</span><span>Telegram Bot API</span><span>Make.com</span></div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-type">Analytics &middot; Python</div>
+        <h3>Interactive Analytics Dashboards</h3>
+        <p>Built interactive data visualisation dashboards for exploring and presenting analytical results — enabling stakeholders to filter, drill down, and derive insights from complex datasets.</p>
+        <div class="project-stack"><span>Python</span><span>pandas</span><span>Visualisation</span></div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-type">Finance &middot; Automation</div>
+        <h3>NIFTY50 Stock Strategy Automation</h3>
+        <p>A Python script that automates a quantitative trading strategy on the NIFTY50 index — executing signal generation, backtesting, and performance analytics programmatically.</p>
+        <div class="project-stack"><span>Python</span><span>NIFTY50</span><span>Backtesting</span><span>Quant Strategy</span></div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-type">ML &middot; Python</div>
+        <h3>Regression Tree Model with Google Forms</h3>
+        <p>A Python-based regression tree model linked to Google Forms for data collection, with automated email reports delivering predictions and insights to stakeholders.</p>
+        <div class="project-stack"><span>Python</span><span>scikit-learn</span><span>Google Forms</span><span>Email Automation</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="resume">
+  <div class="section-inner">
+    <span class="section-label reveal">05 / Resume</span>
+    <div class="divider reveal"></div>
+    <div class="cv-image-container reveal">
+      <img src="cv_page_1.png" alt="Suhit Das Mahapatra — CV">
+    </div>
+  </div>
+</section>
+<section class="section section-alt" id="contact">
+  <div class="section-inner">
+    <span class="section-label reveal">06 / Get in Touch</span>
+    <div class="divider reveal"></div>
+    <h2 class="section-title reveal">Let's connect</h2>
+    <p class="section-desc reveal">Open to actuarial, analytics, and data engineering roles. Feel free to reach out.</p>
+    <div class="contact-grid reveal">
+      <div class="contact-item">
+        <div class="contact-label">Email</div>
+        <a href="mailto:suhitdasmahapatra@gmail.com">suhitdasmahapatra@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">LinkedIn</div>
+        <a href="https://www.linkedin.com/in/suhit-das-mahapatra-626810281/" target="_blank">linkedin.com/in/suhit-das-mahapatra</a>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Location</div>
+        <a href="#">Kolkata, India</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <p>&copy; 2025 Suhit Das Mahapatra &middot; Built with precision.</p>
+</footer>
+<script>
+function toggleModel(id) {
+  const detail = document.getElementById(id);
+  const icon = document.getElementById(id + '-icon');
+  const isOpen = detail.classList.contains('open');
+  document.querySelectorAll('.model-detail').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('[id$="-icon"]').forEach(i => { if(i.id.endsWith('-icon')) i.textContent = '\u25B8'; });
+  if (!isOpen) {
+    detail.classList.add('open');
+    if (icon) icon.textContent = '\u25BE';
+  }
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+});
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('section[id]');
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id'); });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : '';
+  });
+});
+</script>
+</body>
+</html>
