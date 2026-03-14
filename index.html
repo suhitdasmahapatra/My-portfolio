@@ -132,8 +132,7 @@ nav {
   box-shadow: 0 2px 12px rgba(44,24,16,0.06);
   transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
-.skill-card:hover { box-shadow: 0 6px 20px rgba(44,24,16,0.1); }
-.skill-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+.skill-card:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 6px 20px rgba(44,24,16,0.1); }
 .skill-icon {
   width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;
   background: var(--gold-dim); border-radius: 8px; margin-bottom: 1.2rem;
@@ -253,8 +252,7 @@ nav {
   box-shadow: 0 2px 12px rgba(44,24,16,0.06);
   transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
-.project-card:hover { box-shadow: 0 6px 20px rgba(44,24,16,0.1); }
-.project-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+.project-card:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 6px 20px rgba(44,24,16,0.1); }
 .project-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
   background: linear-gradient(90deg, var(--gold), var(--gold-light));
@@ -290,11 +288,13 @@ nav {
   background: var(--card-bg); border: 1px solid var(--card-border);
   border-radius: 6px; padding: 1.5rem; text-align: center;
   transition: border-color var(--transition);
+  overflow: hidden; min-width: 0;
 }
 .contact-item:hover { border-color: var(--gold); }
 .contact-item a {
   color: var(--gold); text-decoration: none; font-weight: 500;
   font-size: 0.95rem; transition: color var(--transition);
+  word-break: break-all; overflow-wrap: break-word;
 }
 .contact-item a:hover { color: var(--gold-light); }
 .contact-label {
@@ -345,11 +345,35 @@ footer {
 <section class="hero" id="hero">
   <div class="hero-content">
     <span class="hero-tag">My Modelling Portfolio</span>
+    <h1>Suhit <span>Das Mahapatra</span></h1>
     <p class="hero-sub">
       Actuarial science student with deep expertise in Excel-based financial modelling,
       Python automation, and AI-driven analytics — building transparent, auditable models
       for real-world decision making.
     </p>
+    <div class="hero-badges" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <span class="badge">IFoA &amp; IAI</span>
+      <span class="badge">CP2 Modelling</span>
+      <span class="badge">Python &amp; Automation</span>
+      <span class="badge">2020 – 2025</span>
+    </div>
+    <div style="display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;margin-top:3rem;">
+      <div style="text-align:center;">
+        <div style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1;">10+</div>
+        <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.3rem;letter-spacing:0.06em;text-transform:uppercase;">Exam Models</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1;">5+</div>
+        <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.3rem;letter-spacing:0.06em;text-transform:uppercase;">Python Projects</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1;">3+</div>
+        <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.3rem;letter-spacing:0.06em;text-transform:uppercase;">AI &amp; Automation Workflows</div>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;">
+      <a href="#models" style="display:inline-block;padding:12px 32px;background:var(--gold);color:#fff;text-decoration:none;font-weight:600;font-size:0.88rem;border-radius:4px;letter-spacing:0.04em;transition:all 0.3s ease;">Explore My Models &darr;</a>
+    </div>
   </div>
 </section>
 <section class="section" id="about">
@@ -456,7 +480,6 @@ footer {
       <div class="model-header" onclick="toggleModel('m1')">
         <div class="model-num">01</div>
         <div class="model-meta">
-          <div class="model-exam">IFoA &middot; April 2025</div>
           <h3>EV Programme Cashflow Model</h3>
           <p>Models a 20-year government electric vehicle subsidy programme — projecting station build costs, admin, advertising, and subsidy against foregone petrol tax revenue.</p>
           <div class="tech-badges">
@@ -503,7 +526,6 @@ footer {
       <div class="model-header" onclick="toggleModel('m2')">
         <div class="model-num">02</div>
         <div class="model-meta">
-          <div class="model-exam">IFoA Mock &middot; April 2025</div>
           <h3>Extended EV Programme Model</h3>
           <p>The most architecturally sophisticated model — introduces data correction layers, a five-colour audit system, and fully self-documenting named ranges throughout.</p>
           <div class="tech-badges">
@@ -546,7 +568,6 @@ footer {
       <div class="model-header" onclick="toggleModel('m3')">
         <div class="model-num">03</div>
         <div class="model-meta">
-          <div class="model-exam">IFoA &middot; September 2022</div>
           <h3>Pension Annuity Amendment Model</h3>
           <p>Models the impact of a pension amendment on ~100 annuitants — applying conditional uplifts and re-escalation based on eligibility criteria.</p>
           <div class="tech-badges">
@@ -586,7 +607,6 @@ footer {
       <div class="model-header" onclick="toggleModel('m4')">
         <div class="model-num">04</div>
         <div class="model-meta">
-          <div class="model-exam">IFoA &middot; April 2024</div>
           <h3>Manufacturing Plant Cashflow with Regression</h3>
           <p>The most technically diverse model — combines linear regression for demand forecasting with IF-switch driven plant comparisons and adverse economic scenarios.</p>
           <div class="tech-badges">
@@ -628,7 +648,6 @@ footer {
       <div class="model-header" onclick="toggleModel('m5')">
         <div class="model-num">05</div>
         <div class="model-meta">
-          <div class="model-exam">IFoA &middot; April 2025</div>
           <h3>Cinema Profitability Model</h3>
           <p>Demonstrates INDEX/MATCH as a lookup engine — deriving utilisation rates by film category and duration, driving three structurally identical scenario sheets.</p>
           <div class="tech-badges">
@@ -672,7 +691,6 @@ footer {
       <div class="model-header" onclick="toggleModel('m6')">
         <div class="model-num">06</div>
         <div class="model-meta">
-          <div class="model-exam">IAI &middot; May 2024</div>
           <h3>Cricket Tournament Monte Carlo Simulation</h3>
           <p>The most unique model — uses Monte Carlo simulation with log-normal distributions to model player performance across 110 players, validated by Chi-squared testing.</p>
           <div class="tech-badges">
@@ -807,7 +825,9 @@ document.querySelectorAll('.nav-links a').forEach(a => {
 window.addEventListener('scroll', () => {
   const sections = document.querySelectorAll('section[id]');
   let current = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id'); });
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+  });
   document.querySelectorAll('.nav-links a').forEach(a => {
     a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : '';
   });
